@@ -1,6 +1,10 @@
 package com.fightbat.practice.pojo;
 
+import org.modelmapper.convention.MatchingStrategies;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,13 +20,14 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Author {
+public class AuthorEntity {
     
     @Id
-    private Long authorId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")
+    private Long id;
 
     private String name;
 
-    private boolean isActive;
+    private boolean active;
 
 }
